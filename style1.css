@@ -1,0 +1,290 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #02020b;
+    overflow: hidden;
+}
+.scene {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at bottom,
+            #10251d 0%,
+            #050812 45%,
+            #010106 100%
+        );
+}
+.ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 25px;
+
+    background: #071b12;
+    box-shadow: 0 -5px 25px #00ff6640;
+}
+.plant {
+    position: absolute;
+    bottom: 20px;
+
+    width: 0;
+    height: var(--height);
+
+    left: var(--x);
+}
+.stem {
+    position: absolute;
+    bottom: 0;
+    left: -3px;
+
+    width: 6px;
+    height: 100%;
+
+    background: linear-gradient(
+        to top,
+        #075b24,
+        #00ff66
+    );
+
+    border-radius: 50%;
+
+    transform: scaleY(0);
+    transform-origin: bottom;
+
+    animation:
+        growStem 3s ease-out var(--delay) forwards;
+}
+.leaf {
+    position: absolute;
+
+    width: 55px;
+    height: 25px;
+
+    background: linear-gradient(
+        135deg,
+        #00ff66,
+        #087a32
+    );
+
+    box-shadow: 0 0 12px #00ff6680;
+
+    border-radius: 100% 0 100% 0;
+
+    transform: scale(0);
+
+    animation:
+        growLeaf 1s ease-out var(--leaf-delay) forwards;
+}
+.leaf-left {
+    left: -52px;
+    bottom: 30%;
+
+    transform-origin: right bottom;
+
+    --rotation: -25deg;
+}
+.leaf-right {
+    left: 0;
+    bottom: 55%;
+
+    transform-origin: left bottom;
+
+    --rotation: 25deg;
+}
+@keyframes growLeaf {
+    from {
+        transform: rotate(var(--rotation)) scale(0);
+    }
+
+    to {
+        transform: rotate(var(--rotation)) scale(1);
+    }
+}
+.flower {
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    left: -50px;
+    bottom: calc(100% - 50px);
+}
+.petal {
+    position: absolute;
+
+    width: 27px;
+    height: 42px;
+
+    left: 36.5px;
+    top: 8px;
+
+    border-radius: 50% 50% 45% 45%;
+
+    background: var(--petal-color);
+
+    box-shadow:
+        0 0 10px var(--petal-color),
+        0 0 25px var(--petal-color);
+
+    transform-origin: 50% 42px;
+
+    transform:
+        rotate(var(--angle)) scale(0);
+
+    animation:
+        bloomPetal 1.2s ease-out
+        calc(var(--delay) + 3s + var(--petal-delay))
+        forwards;
+}
+.p1 {
+    --angle: 0deg;
+    --petal-delay: 0s;
+}
+
+.p2 {
+    --angle: 60deg;
+    --petal-delay: 0.1s;
+}
+
+.p3 {
+    --angle: 120deg;
+    --petal-delay: 0.2s;
+}
+
+.p4 {
+    --angle: 180deg;
+    --petal-delay: 0.3s;
+}
+
+.p5 {
+    --angle: 240deg;
+    --petal-delay: 0.4s;
+}
+
+.p6 {
+    --angle: 300deg;
+    --petal-delay: 0.5s;
+}
+.center {
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    left: 39px;
+    top: 39px;
+
+    border-radius: 50%;
+
+    background: #fff36a;
+
+    box-shadow:
+        0 0 12px #fff36a,
+        0 0 25px #ffb700;
+
+    transform: scale(0);
+
+    animation:
+        showCenter 0.6s ease-out
+        calc(var(--delay) + 4s)
+        forwards;
+}
+@keyframes growStem {
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+@keyframes bloomPetal {
+    from {
+        transform: rotate(var(--angle)) scale(0);
+    }
+
+    to {
+        transform: rotate(var(--angle)) scale(1);
+    }
+}
+@keyframes showCenter {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+.plant1 {
+    --x: 5%;
+    --height: 180px;
+    --delay: 0s;
+    --leaf-delay: 1.5s;
+    --petal-color: #ff35d3;
+}
+.plant2 {
+    --x: 16%;
+    --height: 280px;
+    --delay: 0.8s;
+    --leaf-delay: 2.3s;
+    --petal-color: #a855ff;
+}
+.plant3 {
+    --x: 27%;
+    --height: 150px;
+    --delay: 1.5s;
+    --leaf-delay: 3s;
+    --petal-color: #ff477e;
+}
+.plant4 {
+    --x: 38%;
+    --height: 330px;
+    --delay: 0.3s;
+    --leaf-delay: 1.8s;
+    --petal-color: #ff4de1;
+}
+.plant5 {
+    --x: 50%;
+    --height: 220px;
+    --delay: 1.2s;
+    --leaf-delay: 2.7s;
+    --petal-color: #ff8a30;
+}
+.plant6 {
+    --x: 62%;
+    --height: 300px;
+    --delay: 0.6s;
+    --leaf-delay: 2.1s;
+    --petal-color: #ff35d3;
+}
+.plant7 {
+    --x: 73%;
+    --height: 170px;
+    --delay: 1.8s;
+    --leaf-delay: 3.3s;
+    --petal-color: #42dfff;
+}
+.plant8 {
+    --x: 84%;
+    --height: 270px;
+    --delay: 1s;
+    --leaf-delay: 2.5s;
+    --petal-color: #b65cff;
+}
+.plant9 {
+    --x: 95%;
+    --height: 200px;
+    --delay: 2s;
+    --leaf-delay: 3.5s;
+    --petal-color: #ff477e;
+}
